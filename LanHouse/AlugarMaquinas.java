@@ -1,16 +1,24 @@
 package LanHouse;
 import java.util.Scanner;
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 class Maquinas {
 	String nome;
 	boolean disponibilidade = true;
 	String jogo;
+	double valorMinuto;
 	LocalDateTime horaInicio;
 	LocalDateTime horaTermino;
+		
 
-	private Maquinas(String nome) {
+	private Maquinas(String nome, double valorMinuto) {
 		this.nome = nome;
+		this.valorMinuto = valorMinuto;
+	}
+
+	boolean disponivel() {
+		return disponibilidade;
 	}
 
 	void alugar(String jogo ) throws InterruptedException {
@@ -25,25 +33,34 @@ class Maquinas {
 		}
 	}
 
-	boolean disponivel() {
-		return disponibilidade;
+	void liberar() {
+		if(!disponibilidade) {
+			this.disponibilidade = true;
+			this.horaTermino = LocalDateTime.now();
+			Duration duracao = Duration.between(horaInicio, horaTermino);
+			double valor = duracao.toMinutes() * valorMinuto;
+			System.out.println("Valor a pagar: R$" + valor);
+			System.out.println(nome + " liberada às " + horaTermino.getHour() + ":" + horaTermino.getMinute());
+		} else {
+			System.out.println("Máquina já está disponível");
+		}
 	}
-	
+
 	static Maquinas[] pc = new Maquinas[5];
 	static	Maquinas[] playstation = new Maquinas[5];
 	static	Maquinas[] xbox = new Maquinas[5];
 		
 	static void inicializarMaquinas() {
 		for (int i = 0; i < 5; i++) {
-			pc[i] = new Maquinas("PC" + (i+1));
-			playstation[i] = new Maquinas("Playstation" + (i+1));
-			xbox[i] = new Maquinas("Xbox" + (i+1));
+			pc[i] = new Maquinas("PC" + (i+1), 0.15f);
+			playstation[i] = new Maquinas("Playstation" + (i+1), 0.30f);
+			xbox[i] = new Maquinas("Xbox" + (i+1), 0.45f);
 		}
 	}	
 }
 
-public class AlugarMaquinas{
-	public static void alugarMaquinas(Scanner sc) throws InterruptedException {
+class AlugarMaquinas{
+	static void alugarMaquinas(Scanner sc) throws InterruptedException {
 		
 		System.out.println("=== Escolha uma opção ===");
 		System.out.println("=== 1- PC ===");

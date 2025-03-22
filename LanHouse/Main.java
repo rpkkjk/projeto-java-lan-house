@@ -26,8 +26,8 @@ public class Main
 				AlugarMaquinas.alugarMaquinas(sc);
 				break;
 				case 2:
-				// Adicione o código para pagamento aqui
-				break;
+				RealizarPagamento.realizarPagamento(sc);
+					break;
 				case 3:
 				// Adicione o código para plano aqui
 				break;
