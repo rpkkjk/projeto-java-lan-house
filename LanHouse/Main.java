@@ -1,14 +1,16 @@
 package LanHouse;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main
 {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException, IOException {
 		Maquinas.inicializarMaquinas();
 		Scanner sc = new Scanner(System.in);
 		while (true) {
 			
+			new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 			
 			System.out.println("=== Escolha uma opção ===");
 			System.out.println("=== 1- alugar máquina ===");

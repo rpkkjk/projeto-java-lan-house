@@ -13,12 +13,13 @@ class Maquinas {
 		this.nome = nome;
 	}
 
-	void alugar(String jogo ) {
+	void alugar(String jogo ) throws InterruptedException {
 		if(disponibilidade) {
 			this.jogo = jogo;
 			this.disponibilidade = false;
 			this.horaInicio = LocalDateTime.now();
 			System.out.println(nome + " alugada com sucesso para o jogo " + jogo + " às " + horaInicio.getHour() + ":" + horaInicio.getMinute());
+			Thread.sleep(2000);
 		} else {
 			System.out.println("Máquina indisponível");
 		}
@@ -42,7 +43,7 @@ class Maquinas {
 }
 
 public class AlugarMaquinas{
-	public static void alugarMaquinas(Scanner sc) {
+	public static void alugarMaquinas(Scanner sc) throws InterruptedException {
 		
 		System.out.println("=== Escolha uma opção ===");
 		System.out.println("=== 1- PC ===");
