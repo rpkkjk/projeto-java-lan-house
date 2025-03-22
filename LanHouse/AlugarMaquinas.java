@@ -9,6 +9,10 @@ class Maquinas {
 	LocalDateTime horaInicio;
 	LocalDateTime horaTermino;
 
+	private Maquinas(String nome) {
+		this.nome = nome;
+	}
+
 	void alugar(String jogo ) {
 		if(disponibilidade) {
 			this.jogo = jogo;
@@ -28,74 +32,68 @@ class Maquinas {
 	static	Maquinas[] playstation = new Maquinas[5];
 	static	Maquinas[] xbox = new Maquinas[5];
 		
-		static void inicializarMaquinas() {
-				for (int i = 0; i < 5; i++) {
-				pc[i] = new Maquinas();
-				pc[i].nome = ("PC" + (i+1));
-				playstation[i] = new Maquinas();
-				playstation[i].nome = ("Playstation" + (i+1));
-				xbox[i] = new Maquinas();
-				xbox[i].nome = ("Xbox" + (i+1));
-			}
-				
+	static void inicializarMaquinas() {
+		for (int i = 0; i < 5; i++) {
+			pc[i] = new Maquinas("PC" + (i+1));
+			playstation[i] = new Maquinas("Playstation" + (i+1));
+			xbox[i] = new Maquinas("Xbox" + (i+1));
 		}
-			
-	}
-	
-	public class AlugarMaquinas{
-		public static void main(String[] args) {
-		Maquinas.inicializarMaquinas();
-		Scanner op = new Scanner(System.in);
-		Scanner jg = new Scanner(System.in);
+	}	
+}
+
+public class AlugarMaquinas{
+	public static void alugarMaquinas(Scanner sc) {
 		
 		System.out.println("=== Escolha uma opção ===");
 		System.out.println("=== 1- PC ===");
 		System.out.println("=== 2- playstatio ===");
 		System.out.println("=== 3- xbox ===");
 		
-		int opcao = op.nextInt();
-
+		int opcao = sc.nextInt();
+		sc.nextLine();
+		
 		System.out.println("=== Digite o nome do jogo excolhido ===");
-		String jogo = jg.nextLine();
+		String jogo = sc.nextLine();
 		
 		boolean alugou = false;
-
+		
 		switch (opcao) {
 			case 1:
-				for(int i = 0; i < 5; i++) {
-					if((Maquinas.pc[i]).disponivel()){
-						Maquinas.pc[i].alugar(jogo);
-						alugou = true;
-						break;
-					}
+			//Aluga primeiro PC disponível
+			for(int i = 0; i < 5; i++) {
+				if((Maquinas.pc[i]).disponivel()){
+					Maquinas.pc[i].alugar(jogo);
+					alugou = true;
+					break;
 				}
-				break;
+			}
+			break;
 			case 2:
-				for(int i = 0; i < 5; i++) {
-					if((Maquinas.playstation[i]).disponivel()){
-						Maquinas.playstation[i].alugar(jogo);
-						alugou = true;
-						break;
-					}
+			//Aluga primeiro Playstation disponível
+			for(int i = 0; i < 5; i++) {
+				if((Maquinas.playstation[i]).disponivel()){
+					Maquinas.playstation[i].alugar(jogo);
+					alugou = true;
+					break;
 				}
-				break;
+			}
+			break;
 			case 3:
-				for(int i = 0; i < 5; i++) {
-					if((Maquinas.xbox[i]).disponivel()){
-						Maquinas.xbox[i].alugar(jogo);
-						alugou = true;
-						break;
-					}
+			//Aluga primeiro Xbox disponível
+			for(int i = 0; i < 5; i++) {
+				if((Maquinas.xbox[i]).disponivel()){
+					Maquinas.xbox[i].alugar(jogo);
+					alugou = true;
+					break;
 				}
-				break;
+			}
+			break;
 			default:
-				System.out.println("Opção inválida");
-				break;
+			System.out.println("Opção inválida");
+			break;
 		}
 		if(!alugou) {
 			System.out.println("Não há máquinas disponíveis");
 		}
-		jg.close();
-		op.close();
 	}
 }

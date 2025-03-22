@@ -5,45 +5,39 @@ import java.util.Scanner;
 public class Main
 {
 	public static void main(String[] args) {
-
-
-		System.out.println("=== Escolha uma opção ===");
-		System.out.println("=== 1- alugar máquina ===");
-		System.out.println("=== 2- pagamento ===");
-		System.out.println("=== 3- plano ===");
-		
+		Maquinas.inicializarMaquinas();
 		Scanner sc = new Scanner(System.in);
-		int opcao = sc.nextInt();
-		switch(opcao){
-			case 1: 
-				AlugarMaquinas.main(args);
+		while (true) {
+			
+			
+			System.out.println("=== Escolha uma opção ===");
+			System.out.println("=== 1- alugar máquina ===");
+			System.out.println("=== 2- pagamento ===");
+			System.out.println("=== 3- plano ===");
+			System.out.println("=== 4- sair ===");
+			
+			int opcao = sc.nextInt();
+			
+			
+			switch(opcao){
+				case 1: 
+				AlugarMaquinas.alugarMaquinas(sc);
 				break;
-			case 2:
+				case 2:
 				// Adicione o código para pagamento aqui
 				break;
-			case 3:
+				case 3:
 				// Adicione o código para plano aqui
 				break;
-			default:
+				case 4:
+				System.out.println("Saindo...");
+				sc.close();
+				System.exit(0);
+				break;
+				default:
 				System.out.println("Opção inválida");
 				break;
+			}
 		}
-		sc.close();
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
