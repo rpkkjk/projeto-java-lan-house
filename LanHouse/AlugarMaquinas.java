@@ -18,7 +18,7 @@ class Maquinas {
 			this.jogo = jogo;
 			this.disponibilidade = false;
 			this.horaInicio = LocalDateTime.now();
-			System.out.println(nome + " alugada com sucesso para o jogo " + jogo);
+			System.out.println(nome + " alugada com sucesso para o jogo " + jogo + " às " + horaInicio.getHour() + ":" + horaInicio.getMinute());
 		} else {
 			System.out.println("Máquina indisponível");
 		}
