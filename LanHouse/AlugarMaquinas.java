@@ -27,7 +27,7 @@ class Maquinas {
 			this.disponibilidade = false;
 			this.horaInicio = LocalDateTime.now();
 			System.out.println(nome + " alugada com sucesso para o jogo " + jogo + " às " + horaInicio.getHour() + ":" + horaInicio.getMinute());
-			Thread.sleep(2000);
+			Thread.sleep(5000);
 		} else {
 			System.out.println("Máquina indisponível");
 		}
@@ -66,46 +66,55 @@ class AlugarMaquinas{
 		System.out.println("=== 1- PC ===");
 		System.out.println("=== 2- playstatio ===");
 		System.out.println("=== 3- xbox ===");
+		System.out.println("=== 4- voltar ===");
 		
 		int opcao = sc.nextInt();
 		sc.nextLine();
 		
-		System.out.println("=== Digite o nome do jogo excolhido ===");
-		String jogo = sc.nextLine();
+		String jogo = "";
+		if(opcao !=4){
+			System.out.println("=== Digite o nome do jogo excolhido ===");
+			jogo = sc.nextLine();
+		}
 		
 		boolean alugou = false;
 		
 		switch (opcao) {
 			case 1:
 			//Aluga primeiro PC disponível
-			for(int i = 0; i < 5; i++) {
-				if((Maquinas.pc[i]).disponivel()){
-					Maquinas.pc[i].alugar(jogo);
-					alugou = true;
-					break;
+				for(int i = 0; i < 5; i++) {
+					if((Maquinas.pc[i]).disponivel()){
+						Maquinas.pc[i].alugar(jogo);
+						alugou = true;
+						break;
+					}
 				}
-			}
 			break;
 			case 2:
 			//Aluga primeiro Playstation disponível
-			for(int i = 0; i < 5; i++) {
-				if((Maquinas.playstation[i]).disponivel()){
-					Maquinas.playstation[i].alugar(jogo);
-					alugou = true;
-					break;
+				for(int i = 0; i < 5; i++) {
+					if((Maquinas.playstation[i]).disponivel()){
+						Maquinas.playstation[i].alugar(jogo);
+						alugou = true;
+						break;
+					}
 				}
-			}
 			break;
 			case 3:
 			//Aluga primeiro Xbox disponível
-			for(int i = 0; i < 5; i++) {
-				if((Maquinas.xbox[i]).disponivel()){
-					Maquinas.xbox[i].alugar(jogo);
-					alugou = true;
-					break;
+				for(int i = 0; i < 5; i++) {
+					if((Maquinas.xbox[i]).disponivel()){
+						Maquinas.xbox[i].alugar(jogo);
+						alugou = true;
+						break;
+					}
 				}
-			}
 			break;
+			case 4:
+				System.out.println("Voltando...");
+				alugou = true;	
+				Thread.sleep(1500);
+				break;
 			default:
 			System.out.println("Opção inválida");
 			break;

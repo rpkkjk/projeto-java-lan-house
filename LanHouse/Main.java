@@ -19,7 +19,7 @@ public class Main
 			System.out.println("=== 4- sair ===");
 			
 			int opcao = sc.nextInt();
-			
+			sc.nextLine();
 			
 			switch(opcao){
 				case 1: 
@@ -34,6 +34,8 @@ public class Main
 				case 4:
 				System.out.println("Saindo...");
 				sc.close();
+				Thread.sleep(1000);
+				new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
 				System.exit(0);
 				break;
 				default:
