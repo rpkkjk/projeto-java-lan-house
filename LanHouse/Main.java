@@ -53,6 +53,7 @@ public class Main
 				break;
 				default:
 				System.out.println("Opção inválida");
+				Thread.sleep(1000);
 				break;
 			}
 		}

@@ -130,6 +130,7 @@ class AlugarMaquinas{
 				break;
 			default:
 			System.out.println("Opção inválida");
+			Thread.sleep(1500);
 			break;
 		}
 	}
