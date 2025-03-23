@@ -39,7 +39,7 @@ class Maquinas {
 			this.horaTermino = LocalDateTime.now();
 			Duration duracao = Duration.between(horaInicio, horaTermino);
 			double valor = duracao.toMinutes() * valorMinuto;
-			System.out.println("Valor a pagar: R$" + valor);
+			System.out.printf("\n\n====Valor a pagar: R$%.2f===\n \n", valor);
 			System.out.println(nome + " liberada às " + horaTermino.getHour() + ":" + horaTermino.getMinute());
 		} else {
 			System.out.println("Máquina já está disponível");
@@ -72,55 +72,65 @@ class AlugarMaquinas{
 		sc.nextLine();
 		
 		String jogo = "";
-		if(opcao !=4){
-			System.out.println("=== Digite o nome do jogo excolhido ===");
-			jogo = sc.nextLine();
-		}
-		
 		boolean alugou = false;
 		
 		switch (opcao) {
 			case 1:
 			//Aluga primeiro PC disponível
-				for(int i = 0; i < 5; i++) {
+				for(int i = 0; i < 5;i++) {
 					if((Maquinas.pc[i]).disponivel()){
+						System.out.println("=== Digite o nome do jogo excolhido ===");
+						jogo = sc.nextLine();
 						Maquinas.pc[i].alugar(jogo);
 						alugou = true;
 						break;
 					}
 				}
-			break;
+				if(!alugou){
+					System.out.println("Não há máquinas disponíveis");
+					Thread.sleep(1500);
+				}
+				break;
 			case 2:
 			//Aluga primeiro Playstation disponível
-				for(int i = 0; i < 5; i++) {
+				for(int i = 0; i < 5;i++) {
 					if((Maquinas.playstation[i]).disponivel()){
+						System.out.println("=== Digite o nome do jogo excolhido ===");
+						jogo = sc.nextLine();
 						Maquinas.playstation[i].alugar(jogo);
 						alugou = true;
 						break;
 					}
+					
 				}
-			break;
+				if(!alugou){
+					System.out.println("Não há máquinas disponíveis");
+					Thread.sleep(1500);
+				}
+				break;
 			case 3:
 			//Aluga primeiro Xbox disponível
 				for(int i = 0; i < 5; i++) {
 					if((Maquinas.xbox[i]).disponivel()){
+						System.out.println("=== Digite o nome do jogo excolhido ===");
+						jogo = sc.nextLine();
 						Maquinas.xbox[i].alugar(jogo);
 						alugou = true;
 						break;
 					}
 				}
-			break;
+				if(!alugou){
+					System.out.println("Não há máquinas disponíveis");
+					Thread.sleep(1500);
+				}
+				break;
 			case 4:
 				System.out.println("Voltando...");
-				alugou = true;	
 				Thread.sleep(1500);
 				break;
 			default:
 			System.out.println("Opção inválida");
 			break;
-		}
-		if(!alugou) {
-			System.out.println("Não há máquinas disponíveis");
 		}
 	}
 }

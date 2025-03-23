@@ -5,12 +5,25 @@ import java.util.Scanner;
 
 public class Main
 {
+	public static void limparTela() {
+		try {
+			if (System.getProperty("os.name").contains("Windows")) {
+				new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+			} else {
+				System.out.print("\033[H\033[2J");
+				System.out.flush();
+			}
+		} catch (Exception e) {
+			System.out.println("Erro ao limpar tela.");
+		}
+	}
+	
 	public static void main(String[] args) throws InterruptedException, IOException {
 		Maquinas.inicializarMaquinas();
 		Scanner sc = new Scanner(System.in);
 		while (true) {
 			
-			new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+			limparTela();
 			
 			System.out.println("=== Escolha uma opção ===");
 			System.out.println("=== 1- alugar máquina ===");
@@ -35,7 +48,7 @@ public class Main
 				System.out.println("Saindo...");
 				sc.close();
 				Thread.sleep(1000);
-				new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+				limparTela();
 				System.exit(0);
 				break;
 				default:
