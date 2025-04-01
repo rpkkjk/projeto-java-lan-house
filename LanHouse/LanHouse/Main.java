@@ -29,6 +29,23 @@ public class Main
 		}
 	}
 
+	public static void criaCliente(Scanner sc){
+        AcoesPlano acao = new AcoesPlano();
+
+         System.out.println("=== Digite o nome ===");
+            String nome = sc.nextLine();
+
+            System.out.println("=== Digite o CPF ===");
+            String cpf = sc.nextLine();
+            
+            System.out.println("=== Digite o telefone ===");
+            String telefone = sc.nextLine();
+            
+            int planoEsclhido = acao.opcoesPlado(sc);
+            
+            Cliente cliente = new Cliente(nome, cpf, telefone, planoEsclhido);
+    }
+
 
 	public static void main(String[] ignoredArgs) throws InterruptedException {
 
@@ -56,7 +73,7 @@ public class Main
 					RealizarPagamento.realizarPagamento(sc);
 					break;
 				case 3:
-					// Adicione o código para plano aqui
+					Plano.plano(sc);
 					break;
 				case 4:
 					System.out.println("Saindo...");

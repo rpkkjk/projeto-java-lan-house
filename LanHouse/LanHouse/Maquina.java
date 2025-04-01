@@ -66,12 +66,15 @@ abstract class Maquina{
 
 	void liberar() {
 		if(!disponibilidade) {
-			this.disponibilidade = true;
-			this.horaTermino = LocalDateTime.now();
+			disponibilidade = true;
+			horaTermino = LocalDateTime.now();
+
 			Duration duracao = Duration.between(horaInicio, horaTermino);
 			double valor = duracao.toMinutes() * valorMinuto;
+
 			System.out.printf("\n\n====Valor a pagar: R$%.2f===\n \n", valor);
 			System.out.println(nome + " liberada às " + horaTermino.getHour() + ":" + horaTermino.getMinute());
+			
 		} else {
 			System.out.println("Máquina já está disponível");
 		}

@@ -5,18 +5,6 @@ import static LanHouse.Main.*;
 
 class AlugarMaquinas {
 
-//	static Maquina[] pcArrey = new Pc[5];
-//	static Maquina[] playStationArrey = new PlayStation[5];
-//	static Maquina[] xboxArrey = new Xbox[5];
-//
-//	public static void iniciaMaquinas() throws InterruptedException {
-//		for (int i = 0; i < 5; i++) {
-//			pcArrey[i] = new Pc("Pc " + (i + 1));
-//			playStationArrey[i] = new PlayStation("Play " + (i + 1));
-//			xboxArrey[i] = new Xbox("Xbox " + (i + 1));
-//		}
-//	}
-
 		static void alugarMaquinas (Scanner sc) throws InterruptedException {
 
 			System.out.println("=== Escolha uma opção ===");

@@ -2,7 +2,7 @@ package LanHouse;
 
 import java.util.Scanner;
 
-class acoesPlano{
+class AcoesPlano{
     
 
     int opcoesPlado(Scanner sc){
@@ -21,7 +21,7 @@ class acoesPlano{
 
 
 class Plano{
-    public void plano(Scanner sc) throws InterruptedException{
+    static void plano(Scanner sc) throws InterruptedException{
 
         System.out.println("=== Escolha uma opção  ===");
         System.out.println("=== 1- Novo plano ===");
@@ -29,22 +29,12 @@ class Plano{
         System.out.println("=== 3- Voltar ===");
         int opcao = sc.nextInt();
         sc.nextLine();
-        acoesPlano acao = new acoesPlano();
 
         switch(opcao){
             case 1:
-            System.out.println("=== Digite o nome ===");
-            String nome = sc.nextLine();
+                Main.criaCliente(sc);
+            break;
 
-            System.out.println("=== Digite o CPF ===");
-            String cpf = sc.nextLine();
-            
-            System.out.println("=== Digite o telefone ===");
-            String telefone = sc.nextLine();
-            
-            int planoEsclhido = acao.opcoesPlado(sc);
-            
-            Cliente cliente = new Cliente(nome, cpf, telefone, planoEsclhido);
         }
     }
 }

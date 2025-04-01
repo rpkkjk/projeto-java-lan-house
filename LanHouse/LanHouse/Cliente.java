@@ -1,5 +1,7 @@
 package LanHouse;
 
+import java.util.Scanner;
+
 class Cliente{
     private String nome;
     private String cpf;
@@ -32,9 +34,19 @@ class Cliente{
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-    /*public String getPlano() {
-        return;
-    }*/
+    public String getPlano() {
+        switch (plano) {
+            case 1:
+                return "Semanal";
+            case 2: 
+                return "Mensal";
+            case 3: 
+                return "Semestral";
+            default:
+                return "Sem plano";
+        }
+    }
+
     public void setPlano(int plano) {
         this.plano = plano;
     }
@@ -45,6 +57,4 @@ class Cliente{
         this.minutos = minutos;
     }
 
-    
-    
 }
