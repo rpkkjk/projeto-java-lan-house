@@ -1,6 +1,7 @@
 package LanHouse;
 
 import java.util.Scanner;
+import static LanHouse.Main.*;
 
 class Pagamento{
     String formaPagamento;
@@ -10,20 +11,18 @@ class Pagamento{
 
         System.out.println("Máquinas ocupadas");
         for (int i = 0; i < 5; i++) {
-            if (!Maquinas.pc[i].disponibilidade) {
-                System.out.println(Maquinas.pc[i].nome + " - " + Maquinas.pc[i].jogo + " - " + Maquinas.pc[i].horaInicio.getHour() + ":" + Maquinas.pc[i].horaInicio.getMinute() + "\n");
+            if (!pcArrey[i].getDisponivel()) {
+                System.out.println(pcArrey[i].getNome() + " - " + pcArrey[i].getJogo() + " - " + pcArrey[i].getHoraInicio() + "\n");
                 flag = 1;
             }
-        }
-        for (int i = 0; i < 5; i++) {
-            if (!Maquinas.playstation[i].disponibilidade) {
-                System.out.println(Maquinas.playstation[i].nome + " - " + Maquinas.playstation[i].jogo + " - " + Maquinas.playstation[i].horaInicio.getHour() + ":" + Maquinas.playstation[i].horaInicio.getMinute() + "\n");
+
+            if (!playStationArrey[i].getDisponivel()) {
+                System.out.println(playStationArrey[i].getNome() + " - " + playStationArrey[i].getJogo() + " - " + playStationArrey[i].getHoraInicio() + "\n");
                 flag = 1;
             }
-        }
-        for (int i = 0; i < 5; i++) {
-            if (!Maquinas.xbox[i].disponibilidade) {
-                System.out.println(Maquinas.xbox[i].nome + " - " + Maquinas.xbox[i].jogo + " - " + Maquinas.xbox[i].horaInicio.getHour() + ":" + Maquinas.xbox[i].horaInicio.getMinute() + "\n");   
+
+            if (!xboxArrey[i].getDisponivel()) {
+                System.out.println(xboxArrey[i].getNome() + " - " + xboxArrey[i].getJogo() + " - " + xboxArrey[i].getHoraInicio() + "\n");
                 flag = 1;
             }
         }
@@ -64,16 +63,16 @@ class RealizarPagamento{
             String nome = sc.nextLine();
             
             for(int i = 0; i < 5; i++) {
-                if (Maquinas.pc[i].nome.equals(nome)) {
-                Maquinas.pc[i].liberar();
+                if (pcArrey[i].getNome().equals(nome)) {
+                pcArrey[i].liberar();
                 break;
             }
-            if (Maquinas.playstation[i].nome.equals(nome)) {
-                Maquinas.playstation[i].liberar();
+            if (playStationArrey[i].getNome().equals(nome)) {
+                playStationArrey[i].liberar();
                 break;
             }
-            if (Maquinas.xbox[i].nome.equals(nome)) {
-                Maquinas.xbox[i].liberar();
+            if (xboxArrey[i].getNome().equals(nome)) {
+                xboxArrey[i].liberar();
                 break;
             }
         }
@@ -85,4 +84,3 @@ class RealizarPagamento{
         }
     }
 }
-
