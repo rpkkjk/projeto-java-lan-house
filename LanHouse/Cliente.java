@@ -2,6 +2,7 @@ package LanHouse;
 
 class Cliente{
     private String nome;
+<<<<<<< HEAD
     private String cpf;
     private String telefone;
     private int plano;
@@ -45,6 +46,10 @@ class Cliente{
         this.minutos = minutos;
     }
 
+=======
+    private String telefone;
+    private String plano;
+>>>>>>> 3586a49 (stage 2)
     
     
 }
