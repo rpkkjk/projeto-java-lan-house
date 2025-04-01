@@ -7,7 +7,7 @@ class Pagamento{
     String formaPagamento;
 
     byte  maquinasOcupadas() {
-        byte flag = 0;   
+        byte flag = 0;
 
         System.out.println("Máquinas ocupadas");
         for (int i = 0; i < 5; i++) {
@@ -31,12 +31,12 @@ class Pagamento{
 
     void formaPagamento(Scanner sc) throws InterruptedException {
         String formaPagamento = "";
-        
+
         System.out.println("=== Escolha uma opção ===");
         System.out.println("=== 1- dinheiro ===");
         System.out.println("=== 2- cartão ===");
         System.out.println("=== 3- Descontar horas do plano ===");
-        
+
         int opcao = sc.nextInt();
         sc.nextLine();
         if(opcao == 1){
@@ -57,30 +57,30 @@ class RealizarPagamento{
     static void realizarPagamento(Scanner sc) throws InterruptedException {
         //Scanner sc = new Scanner(System.in);
         Pagamento pagamento = new Pagamento();
-        
+
         byte falg = pagamento.maquinasOcupadas();
-        
+
         if(falg != 0){
             System.out.println("Digite o nome da máquina que deseja pagar");
-            
+
             String nome = sc.nextLine();
-            
+
             for(int i = 0; i < 5; i++) {
                 if (pcArrey[i].getNome().equals(nome)) {
-                pcArrey[i].liberar();
-                break;
+                    pcArrey[i].liberar();
+                    break;
+                }
+                if (playStationArrey[i].getNome().equals(nome)) {
+                    playStationArrey[i].liberar();
+                    break;
+                }
+                if (xboxArrey[i].getNome().equals(nome)) {
+                    xboxArrey[i].liberar();
+                    break;
+                }
             }
-            if (playStationArrey[i].getNome().equals(nome)) {
-                playStationArrey[i].liberar();
-                break;
-            }
-            if (xboxArrey[i].getNome().equals(nome)) {
-                xboxArrey[i].liberar();
-                break;
-            }
-        }
-        
-        pagamento.formaPagamento(sc);
+
+            pagamento.formaPagamento(sc);
         }else{
             System.out.println("Não há máquinas ocupadas");
             Thread.sleep(1500);

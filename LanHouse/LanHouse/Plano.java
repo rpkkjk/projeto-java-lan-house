@@ -10,7 +10,7 @@ class acoesPlano{
         System.out.println("=== Escolha um plano ===");
         System.out.println("=== 1- Semanal: 20 horas em qualquer maquina por R$20,00  ===");
         System.out.println("=== 2- Mensal: 100 horas em qualquer maquina por R$90,00 ===");
-        System.out.println("=== 3- Simestral: 800 horas em qualquer maquina por R$700,00 ===");
+        System.out.println("=== 3- Semestral: 800 horas em qualquer maquina por R$700,00 ===");
         System.out.println("=== 4- Voltar ===");
         
         opcao = sc.nextInt();
