@@ -19,7 +19,6 @@ class acoesPlano{
     }
 }
 
-    void descontaHoras(){}
 
 class Plano{
     public void plano(Scanner sc) throws InterruptedException{
