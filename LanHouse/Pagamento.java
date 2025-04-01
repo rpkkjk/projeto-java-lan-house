@@ -35,6 +35,7 @@ class Pagamento{
         System.out.println("=== Escolha uma opção ===");
         System.out.println("=== 1- dinheiro ===");
         System.out.println("=== 2- cartão ===");
+        System.out.println("=== 3- Descontar horas do plano ===");
         
         int opcao = sc.nextInt();
         sc.nextLine();
@@ -45,8 +46,10 @@ class Pagamento{
             formaPagamento = "cartão";
             System.out.println("Pagamento realizado com " + formaPagamento);
         }
-        
-        Thread.sleep(3000);
+        else if(opcao == 3){
+            //Plano.decontarHoras();
+            Thread.sleep(3000);
+        }
     }
 }
 
