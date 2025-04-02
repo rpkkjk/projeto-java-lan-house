@@ -34,7 +34,7 @@ class AlugarMaquinas {
 
 					if (!alugou) {
 						System.out.println("Não há máquinas disponíveis");
-						Thread.sleep(1500);
+						Thread.sleep(2000);
 					}
 					break;
 				case 2:
@@ -51,7 +51,7 @@ class AlugarMaquinas {
 					}
 					if (!alugou) {
 						System.out.println("Não há máquinas disponíveis");
-						Thread.sleep(1500);
+						Thread.sleep(2000);
 					}
 					break;
 				case 3:
@@ -67,16 +67,16 @@ class AlugarMaquinas {
 					}
 					if (!alugou) {
 						System.out.println("Não há máquinas disponíveis");
-						Thread.sleep(1500);
+						Thread.sleep(200);
 					}
 					break;
 				case 4:
 					System.out.println("Voltando...");
-					Thread.sleep(1500);
+					Thread.sleep(2000);
 					break;
 				default:
 					System.out.println("Opção inválida");
-					Thread.sleep(1500);
+					Thread.sleep(2000);
 					break;
 			}
 		}

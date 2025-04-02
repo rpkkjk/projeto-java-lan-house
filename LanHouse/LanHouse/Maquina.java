@@ -58,7 +58,7 @@ abstract class Maquina{
 			disponibilidade = false;
 			setHoraInicio();
 			System.out.println(getNome() + " alugada com sucesso para o jogo " + getJogo() + " às " + getHoraInicio());
-			Thread.sleep(5000);
+			Thread.sleep(3000);
 		} else {
 			System.out.println("Máquina indisponível");
 		}

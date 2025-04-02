@@ -1,6 +1,8 @@
 package LanHouse;
 
+import java.time.Duration;
 import java.util.Scanner;
+import static LanHouse.Main.*;
 
 class AcoesPlano{
     
@@ -17,6 +19,51 @@ class AcoesPlano{
         sc.nextLine();
         return opcao;
     }
+
+    public static void criaCliente(Scanner sc) throws InterruptedException{
+        AcoesPlano acao = new AcoesPlano();
+
+         System.out.println("=== Digite o nome ===");
+            String nome = sc.nextLine();
+
+            System.out.println("=== Digite o CPF ===");
+            String cpf = sc.nextLine();
+            
+            System.out.println("=== Digite o telefone ===");
+            String telefone = sc.nextLine();
+            
+            int planoEsclhido = acao.opcoesPlado(sc);
+            
+            Cliente novoCliente = new Cliente(nome, cpf, telefone, planoEsclhido);
+            clientes.add(novoCliente);
+            System.out.println("=== Cliente cadastrado com sucesso ===");
+            Thread.sleep(1500);
+    }
+
+    public static void descontarHoras(Scanner sc){
+
+        System.out.println("=== Digite o CPF ===");
+        String cpf = sc.nextLine();
+
+        for (int i = 0; i < clientes.size(); i++) {
+
+            if (clientes.get(i).getCpf().equals(cpf)) {
+
+                Duration duracao = Duration.ofHours(1);
+                int minutos = (int) duracao.toMinutes();
+                if (clientes.get(i).getMinutos() >= minutos) {
+                    clientes.get(i).setMinutos((clientes.get(i).getMinutos() - minutos));
+                    System.out.println("=== Horas descontadas com sucesso ===");
+                    System.out.println("=== Horas restantes: " + clientes.get(i).getMinutos() / 60 + " ===");
+                } else {
+                    System.out.println("=== Horas insuficientes ===");
+
+                }
+            } else {
+                System.out.println("=== CPF não encontrado ===");
+            }
+        }
+    }
 }
 
 
@@ -32,10 +79,30 @@ class Plano{
 
         switch(opcao){
             case 1:
-                Main.criaCliente(sc);
-            break;
-
+                AcoesPlano.criaCliente(sc);
+                break;
+            case 2:
+                System.out.println("=== Cancelar plano ===");
+                System.out.println("=== Digite o CPF ===");
+                String cpf = sc.nextLine();
+                for (int i = 0; i < clientes.size(); i++) {
+                    if (clientes.get(i).getCpf().equals(cpf)) {
+                        clientes.remove(i);
+                        System.out.println("=== Plano cancelado com sucesso ===");
+                        break;
+                    }
+                }
+                break;
+            case 3:
+                System.out.println("=== Voltando ===");
+                Thread.sleep(1500);
+                break;
+            default:
+                System.out.println("=== Opção inválida ===");
+                Thread.sleep(1500);
+                break;
         }
     }
+
 }
 

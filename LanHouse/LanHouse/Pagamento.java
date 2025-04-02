@@ -35,6 +35,24 @@ class Pagamento{
         System.out.println("=== Escolha uma opção ===");
         System.out.println("=== 1- dinheiro ===");
         System.out.println("=== 2- cartão ===");
+
+        int opcao = sc.nextInt();
+        sc.nextLine();
+        if(opcao == 1){
+            formaPagamento = "dinheiro";
+            System.out.println("Pagamento realizado com " + formaPagamento);
+        } else if(opcao == 2){
+            formaPagamento = "cartão";
+            System.out.println("Pagamento realizado com " + formaPagamento);
+        }
+    }
+
+    void formaPagamentoComPlano(Scanner sc) throws InterruptedException {
+        String formaPagamento = "";
+
+        System.out.println("=== Escolha uma opção ===");
+        System.out.println("=== 1- dinheiro ===");
+        System.out.println("=== 2- cartão ===");
         System.out.println("=== 3- Descontar horas do plano ===");
 
         int opcao = sc.nextInt();
@@ -47,8 +65,8 @@ class Pagamento{
             System.out.println("Pagamento realizado com " + formaPagamento);
         }
         else if(opcao == 3){
-            //Plano.decontarHoras();
-            Thread.sleep(3000);
+            AcoesPlano.descontarHoras(sc);
+            Thread.sleep(6000);
         }
     }
 }
@@ -80,7 +98,7 @@ class RealizarPagamento{
                 }
             }
 
-            pagamento.formaPagamento(sc);
+            pagamento.formaPagamentoComPlano(sc);
         }else{
             System.out.println("Não há máquinas ocupadas");
             Thread.sleep(1500);

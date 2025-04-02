@@ -1,19 +1,18 @@
 package LanHouse;
 
-import java.util.Scanner;
-
 class Cliente{
     private String nome;
     private String cpf;
     private String telefone;
     private int plano;
-    private int minutos;
+    private int minutosRestantes = 0;
 
     public Cliente(String nome, String cpf,  String telefone, int plano) {
         setNome(nome);
         setCpf(cpf);
         setTelefone(telefone);
         setPlano(plano);
+        setMinutos(plano);
     }
 
     public String getCpf() {
@@ -51,10 +50,20 @@ class Cliente{
         this.plano = plano;
     }
     public int getMinutos() {
-        return minutos;
+        return minutosRestantes;
     }
-    public void setMinutos(int minutos) {
-        this.minutos = minutos;
+    public void setMinutos(int plano) {
+        switch (plano) {
+            case 1:
+                minutosRestantes = 20 * 60;
+                break;
+            case 2:
+                minutosRestantes = 100 * 60;
+                break;
+            case 3:
+                minutosRestantes = 800 * 60;
+                break;
+        }
     }
 
 }

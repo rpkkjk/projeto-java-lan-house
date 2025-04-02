@@ -1,5 +1,6 @@
 package LanHouse;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main
@@ -29,22 +30,7 @@ public class Main
 		}
 	}
 
-	public static void criaCliente(Scanner sc){
-        AcoesPlano acao = new AcoesPlano();
-
-         System.out.println("=== Digite o nome ===");
-            String nome = sc.nextLine();
-
-            System.out.println("=== Digite o CPF ===");
-            String cpf = sc.nextLine();
-            
-            System.out.println("=== Digite o telefone ===");
-            String telefone = sc.nextLine();
-            
-            int planoEsclhido = acao.opcoesPlado(sc);
-            
-            Cliente cliente = new Cliente(nome, cpf, telefone, planoEsclhido);
-    }
+	static ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 
 
 	public static void main(String[] ignoredArgs) throws InterruptedException {
