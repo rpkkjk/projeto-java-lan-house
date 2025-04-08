@@ -20,7 +20,7 @@ class AcoesPlano{
         return opcao;
     }
 
-    public static void criaCliente(Scanner sc) throws InterruptedException{
+     static void criaCliente(Scanner sc) throws InterruptedException{
         AcoesPlano acao = new AcoesPlano();
 
          System.out.println("=== Digite o nome ===");
@@ -40,7 +40,7 @@ class AcoesPlano{
             Thread.sleep(1500);
     }
 
-    public static void descontarHoras(Scanner sc){
+     static void descontarHoras(Scanner sc){
 
         System.out.println("=== Digite o CPF ===");
         String cpf = sc.nextLine();
@@ -64,6 +64,12 @@ class AcoesPlano{
             }
         }
     }
+
+    static void listarPlanos(){
+        for(Cliente cl : clientes){
+            System.out.println(cl.getNome() + "-" + cl.getCpf() + "-" + cl.getTelefone() + "-" + cl.getMinutos());
+        }
+    }
 }
 
 
@@ -73,7 +79,8 @@ class Plano{
         System.out.println("=== Escolha uma opção  ===");
         System.out.println("=== 1- Novo plano ===");
         System.out.println("=== 2- Cancelar plano ===");
-        System.out.println("=== 3- Voltar ===");
+        System.out.println("=== 3- Listar planos ativos ===");
+        System.out.println("=== 4- Voltar ===");
         int opcao = sc.nextInt();
         sc.nextLine();
 
@@ -93,7 +100,9 @@ class Plano{
                     }
                 }
                 break;
-            case 3:
+                case 3:
+                    AcoesPlano.listarPlanos();
+            case 4:
                 System.out.println("=== Voltando ===");
                 Thread.sleep(1500);
                 break;
