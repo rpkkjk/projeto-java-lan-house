@@ -10,9 +10,9 @@ class AcoesPlano{
     int opcoesPlado(Scanner sc){
         int opcao = 0;
         System.out.println("=== Escolha um plano ===");
-        System.out.println("=== 1- Semanal: 20 horas em qualquer maquina por R$20,00  ===");
-        System.out.println("=== 2- Mensal: 100 horas em qualquer maquina por R$90,00 ===");
-        System.out.println("=== 3- Semestral: 800 horas em qualquer maquina por R$700,00 ===");
+        System.out.println("=== 1- Semanal: 1200 minutos em qualquer maquina por R$20,00  ===");
+        System.out.println("=== 2- Mensal: 6000 minutos em qualquer maquina por R$90,00 ===");
+        System.out.println("=== 3- Semestral: 48000 minutos em qualquer maquina por R$700,00 ===");
         System.out.println("=== 4- Voltar ===");
         
         opcao = sc.nextInt();
@@ -20,7 +20,7 @@ class AcoesPlano{
         return opcao;
     }
 
-    public static void criaCliente(Scanner sc) throws InterruptedException{
+     static void criaCliente(Scanner sc) throws InterruptedException{
         AcoesPlano acao = new AcoesPlano();
 
          System.out.println("=== Digite o nome ===");
@@ -40,40 +40,48 @@ class AcoesPlano{
             Thread.sleep(1500);
     }
 
-    public static void descontarHoras(Scanner sc){
+     static void descontarHoras(Scanner sc){
 
         System.out.println("=== Digite o CPF ===");
         String cpf = sc.nextLine();
 
-        for (int i = 0; i < clientes.size(); i++) {
+        for (Cliente cl : clientes) {
 
-            if (clientes.get(i).getCpf().equals(cpf)) {
+            if (cl.getCpf().equals(cpf)) {
 
-                Duration duracao = Duration.ofHours(1);
+                Duration duracao = Duration.ofMinutes(1);
                 int minutos = (int) duracao.toMinutes();
-                if (clientes.get(i).getMinutos() >= minutos) {
-                    clientes.get(i).setMinutos((clientes.get(i).getMinutos() - minutos));
-                    System.out.println("=== Horas descontadas com sucesso ===");
-                    System.out.println("=== Horas restantes: " + clientes.get(i).getMinutos() / 60 + " ===");
+                if (cl.getMinutos() >= minutos) {
+                    cl.setMinutos((cl.getMinutos() - minutos));
+                    System.out.println("=== Minutos descontadas com sucesso ===");
+                    System.out.println("=== Minutos restantes: " + cl.getMinutos() / 60 + " ===");
                 } else {
-                    System.out.println("=== Horas insuficientes ===");
+                    System.out.println("=== Minutos insuficientes ===");
 
                 }
             } else {
-                System.out.println("=== CPF não encontrado ===");
+                throw new IllegalAccessError("CPF NÃO ENCONTRADO");
+                
             }
+        }
+    }
+
+    static void listarPlanos(){
+        for(Cliente cl : clientes){
+            System.out.println(cl.getNome() + "-" + cl.getCpf() + "-" + cl.getTelefone() + "-" + cl.getMinutos());
         }
     }
 }
 
 
 class Plano{
-    static void plano(Scanner sc) throws InterruptedException{
+    static void plano(Scanner sc) throws Exception{
 
         System.out.println("=== Escolha uma opção  ===");
         System.out.println("=== 1- Novo plano ===");
         System.out.println("=== 2- Cancelar plano ===");
-        System.out.println("=== 3- Voltar ===");
+        System.out.println("=== 3- Listar planos ativos ===");
+        System.out.println("=== 4- Voltar ===");
         int opcao = sc.nextInt();
         sc.nextLine();
 
@@ -93,14 +101,14 @@ class Plano{
                     }
                 }
                 break;
-            case 3:
+                case 3:
+                    AcoesPlano.listarPlanos();
+            case 4:
                 System.out.println("=== Voltando ===");
-                Thread.sleep(1500);
+                Thread.sleep(5000);
                 break;
             default:
-                System.out.println("=== Opção inválida ===");
-                Thread.sleep(1500);
-                break;
+                throw  new IllegalAccessException("opção invalida");
         }
     }
 

@@ -33,7 +33,7 @@ public class Main
 	static ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 
 
-	public static void main(String[] ignoredArgs) throws InterruptedException {
+	public static void main(String[] ignoredArgs) throws Exception {
 
 		iniciaMaquinas();
 
@@ -51,27 +51,31 @@ public class Main
 			int opcao = sc.nextInt();
 			sc.nextLine();
 
-			switch(opcao){
-				case 1:
-					AlugarMaquinas.alugarMaquinas(sc);
-					break;
-				case 2:
-					RealizarPagamento.realizarPagamento(sc);
-					break;
-				case 3:
-					Plano.plano(sc);
-					break;
-				case 4:
-					System.out.println("Saindo...");
-					sc.close();
-					Thread.sleep(1000);
-					limparTela();
-					System.exit(0);
-					break;
-				default:
-					System.out.println("Opção inválida");
-					Thread.sleep(1000);
-					break;
+			try {
+				switch(opcao){
+					case 1:
+						AlugarMaquinas.alugarMaquinas(sc);
+						break;
+					case 2:
+						RealizarPagamento.realizarPagamento(sc);
+						break;
+					case 3:
+						Plano.plano(sc);
+						break;
+					case 4:
+						System.out.println("Saindo...");
+						sc.close();
+						Thread.sleep(1000);
+						limparTela();
+						System.exit(0);
+						break;
+					default:
+						throw new IllegalArgumentException("Opção Invalida");
+				}
+			} catch (IllegalArgumentException e) {
+				e.getMessage();
+			}catch(IllegalAccessError e){
+				e.getMessage();
 			}
 		}
 	}

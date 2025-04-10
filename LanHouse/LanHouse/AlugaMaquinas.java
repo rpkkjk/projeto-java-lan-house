@@ -75,9 +75,7 @@ class AlugarMaquinas {
 					Thread.sleep(2000);
 					break;
 				default:
-					System.out.println("Opção inválida");
-					Thread.sleep(2000);
-					break;
+					throw new IllegalArgumentException("Opção Invalida");
 			}
 		}
 	}

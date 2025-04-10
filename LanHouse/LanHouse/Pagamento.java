@@ -29,7 +29,7 @@ class Pagamento{
         return flag;
     }
 
-    void formaPagamento(Scanner sc) throws InterruptedException {
+    void formaPagamento(Scanner sc) throws Exception {
         String formaPagamento = "";
 
         System.out.println("=== Escolha uma opção ===");
@@ -47,7 +47,7 @@ class Pagamento{
         }
     }
 
-    void formaPagamentoComPlano(Scanner sc) throws InterruptedException {
+    void formaPagamentoComPlano(Scanner sc) throws Exception {
         String formaPagamento = "";
 
         System.out.println("=== Escolha uma opção ===");
@@ -72,7 +72,7 @@ class Pagamento{
 }
 
 class RealizarPagamento{
-    static void realizarPagamento(Scanner sc) throws InterruptedException {
+    static void realizarPagamento(Scanner sc) throws Exception {
         //Scanner sc = new Scanner(System.in);
         Pagamento pagamento = new Pagamento();
 
@@ -82,26 +82,40 @@ class RealizarPagamento{
             System.out.println("Digite o nome da máquina que deseja pagar");
 
             String nome = sc.nextLine();
+            
+            int indice = 0, mqn = 0;
 
             for(int i = 0; i < 5; i++) {
                 if (pcArrey[i].getNome().equals(nome)) {
-                    pcArrey[i].liberar();
+                    pcArrey[i].calculaValor();
+                    indice = i;
+                    mqn = 1;
                     break;
                 }
                 if (playStationArrey[i].getNome().equals(nome)) {
-                    playStationArrey[i].liberar();
+                    playStationArrey[i].calculaValor();
+                    indice = i;
+                    mqn = 2;
                     break;
                 }
                 if (xboxArrey[i].getNome().equals(nome)) {
-                    xboxArrey[i].liberar();
+                    xboxArrey[i].calculaValor();
+                    indice = i;
+                    mqn = 3;
                     break;
                 }
             }
 
             pagamento.formaPagamentoComPlano(sc);
+            
+            switch (mqn){
+                case 1: pcArrey[indice].liberar(); break;
+                case 2: playStationArrey[indice].liberar(); break;
+                case 3: xboxArrey[indice].liberar(); break;
+            }
         }else{
             System.out.println("Não há máquinas ocupadas");
             Thread.sleep(1500);
         }
     }
-}
+} 
