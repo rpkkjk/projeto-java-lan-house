@@ -31,10 +31,12 @@ public class Main
 	}
 
 	static ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+	
 
 
 	public static void main(String[] ignoredArgs) throws Exception {
-
+		
+		clientes = Arquivo.lerPlanos();
 		iniciaMaquinas();
 
 		Scanner sc = new Scanner(System.in);
@@ -64,6 +66,7 @@ public class Main
 						break;
 					case 4:
 						System.out.println("Saindo...");
+						Arquivo.salvarTodosPlanos(clientes);
 						sc.close();
 						Thread.sleep(1000);
 						limparTela();
@@ -74,8 +77,10 @@ public class Main
 				}
 			} catch (IllegalArgumentException e) {
 				e.getMessage();
+				Thread.sleep(2000);
 			}catch(IllegalAccessError e){
 				e.getMessage();
+				Thread.sleep(2000);
 			}
 		}
 	}
