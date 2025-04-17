@@ -76,10 +76,10 @@ public class Main
 						throw new IllegalArgumentException("Opção Invalida");
 				}
 			} catch (IllegalArgumentException e) {
-				e.getMessage();
+				System.out.println("ERROR: " + e.getMessage());
 				Thread.sleep(2000);
 			}catch(IllegalAccessError e){
-				e.getMessage();
+				System.out.println("ERROR: " + e.getMessage());
 				Thread.sleep(2000);
 			}
 		}
